@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 class Stripe:
     def __init__(self,token):
@@ -27,9 +28,28 @@ class Stripe:
             print(f"This is Page{page_counter}")
         return charges
 
+
+
+
+
     def save_to_json_file(self,charges):
         with open("test_files/test.json", "w") as file:
             json.dump(charges, file, indent=2)
+
+        # enter the json filename to be converted to json
+        JSON_FILE = 'test_files/test.json'
+
+        # enter the csv filename you wish to save it as
+        CSV_FILE = 'csv_filename.csv'
+
+        with open(JSON_FILE, encoding='utf-8') as f:
+            df = pd.read_json(f)
+        df=pd.DataFrame(charges[1])
+
+        df.to_csv(CSV_FILE, encoding='utf-8', index=False)
+
+
+
         return
 
 
