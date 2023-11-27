@@ -28,10 +28,6 @@ class Stripe:
             print(f"This is Page{page_counter}")
         return charges
 
-
-
-
-
     def save_to_json_file(self,charges):
         with open("test_files/test.json", "w") as file:
             json.dump(charges, file, indent=2)
@@ -47,8 +43,6 @@ class Stripe:
         df=pd.DataFrame(charges[1])
 
         df.to_csv(CSV_FILE, encoding='utf-8', index=False)
-
-
 
         return
 
